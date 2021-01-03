@@ -7,7 +7,6 @@ import (
 	"io/ioutil"
 	"log"
 	"net/http"
-	"os"
 	"time"
 
 	"github.com/go-redis/redis"
@@ -30,7 +29,7 @@ func main() {
 	r := mux.NewRouter()
 	r.HandleFunc("/", inicio).Methods("GET")
 	r.HandleFunc("/caso", caseHandler).Methods("POST")
-	err := http.ListenAndServe(os.Getenv("PORT"), r)
+	err := http.ListenAndServe(":3001", r)
 	if err != nil {
 		log.Fatal(err)
 	}
