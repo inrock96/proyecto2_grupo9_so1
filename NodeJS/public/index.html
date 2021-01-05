@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <!-- CSS only -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+        integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+
+
+    <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.12/css/all.css"
+        integrity="sha384-G0fIWCsCzJIMAVNQPfjH08cyYaUtMwjJwqiRKxxE/rx96Uroj1BtIQ6MLJuheaO9" crossorigin="anonymous">
+
+    <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"
+        defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"
+        defer></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
+        integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"
+        defer></script>
+
+    <script src="js/plotly.min.js" defer></script>
+    <script src="socket.io/socket.io.js" defer></script>
+    <script src="js/socket-custom.js" defer></script>
+</head>
+
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-light" style="background-color: #e3f2fd;">
+        <a class="navbar-brand" href="#">
+            <img src="img/covid19.png" width="30" height="30" alt="" loading="lazy"> Covid-19
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Datos
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="#">Bernald Renato Paxtor Peren - 201313828</a>
+                        <a class="dropdown-item" href="#">Inti Andres Samayoa Ortiz - 201504002</a>
+                        <a class="dropdown-item" href="#">Pascual Domingo Diego - 201403504</a>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Layout -->
+
+    <div class="container-fluid">
+        <div class="row text-center mt-3">
+            <div class="col-md mx-auto">
+                <p style="font-size: 25px; color: #000; align-content: center;"> Todos los casos </p>
+                <div class="table-responsive">
+                    <table class="table table-hover table-bordered table-striped table-fixed">
+                        <thead>
+                            <tr>
+                                <th scope="col">Nombre</th>
+                                <th scope="col">Edad</th>
+                                <th scope="col">Departamento</th>
+                                <th scope="col">Forma de Contagio</th>
+                                <th scope="col">Estado</th>
+                            </tr>
+                        </thead>
+                        <tbody id="alldata">
+                        </tbody>
+                    </table>
+                </div>
+
+            </div>
+            <div class="col-md mx-auto">
+                <div class="row text-center mt-3">
+                    <div class="col-md mx-auto">
+                        <p style="font-size: 25px; color: #000; align-content: center;"> Ultimo Caso </p>
+                        <table class="table table-hover  table-bordered table-stripe">
+                            <thead>
+                                <tr>
+                                    <th scope="col">Nombre</th>
+                                    <th scope="col">Edad</th>
+                                    <th scope="col">Departamento</th>
+                                    <th scope="col">Forma de Contagio</th>
+                                    <th scope="col">Estado</th>
+                                </tr>
+                            </thead>
+                            <tbody id="last_case">
+                                <tr>
+                                    <th scope="row">
+                                        <p id="nombre1"> </p>
+                                    </th>
+                                    <td>
+                                        <p id="edad1"> </p>
+                                    </td>
+                                    <td>
+                                        <p id="depto1"></p>
+                                    </td>
+                                    <td>
+                                        <p id="forma1"></p>
+                                    </td>
+                                    <td>
+                                        <p id="estado1"></p>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">
+                                        <p id="nombre2"> </p>
+                                    </th>
+                                    <td>
+                                        <p id="edad2"> </p>
+                                    </td>
+                                    <td>
+                                        <p id="depto2"></p>
+                                    </td>
+                                    <td>
+                                        <p id="forma2"></p>
+                                    </td>
+                                    <td>
+                                        <p id="estado2"></p>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">
+                                        <p id="nombre3"> </p>
+                                    </th>
+                                    <td>
+                                        <p id="edad3"> </p>
+                                    </td>
+                                    <td>
+                                        <p id="depto3"></p>
+                                    </td>
+                                    <td>
+                                        <p id="forma3"></p>
+                                    </td>
+                                    <td>
+                                        <p id="estado3"></p>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">
+                                        <p id="nombre4"> </p>
+                                    </th>
+                                    <td>
+                                        <p id="edad4"> </p>
+                                    </td>
+                                    <td>
+                                        <p id="depto4"></p>
+                                    </td>
+                                    <td>
+                                        <p id="forma4"></p>
+                                    </td>
+                                    <td>
+                                        <p id="estado4"></p>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">
+                                        <p id="nombre5"> </p>
+                                    </th>
+                                    <td>
+                                        <p id="edad5"> </p>
+                                    </td>
+                                    <td>
+                                        <p id="depto5"></p>
+                                    </td>
+                                    <td>
+                                        <p id="forma5"></p>
+                                    </td>
+                                    <td>
+                                        <p id="estado5"></p>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+            </div>
+
+
+        </div>
+        <div class="row text-center mt-3">
+            <div class="col-md mx-auto">
+                <div class="row text-center mt-3">
+                    <div class="col-md mx-auto">
+                        <p style="font-size: 25px; color: #000; align-content: center;"> Top 3 </p>
+                        <table class="table table-hover table-bordered table-striped">
+                            <thead>
+                                <tr>
+                                    <th scope="col">Departamento</th>
+                                    <th scope="col">Cantidad</th>
+                                </tr>
+                            </thead>
+                            <tbody id="alldata">
+                                <tr>
+                                    <td>
+                                        <p id="depto1_n"></p>
+                                    </td>
+                                    <td>
+                                        <p id="depto_val1"></p>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <p id="depto2_n"></p>
+                                    </td>
+                                    <td>
+                                        <p id="depto_val2"></p>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <p id="depto3_n"></p>
+                                    </td>
+                                    <td>
+                                        <p id="depto_val3"></p>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <div class="row text-center mt-3">
+            <div class="col-md mx-auto">
+                <p style="font-size: 25px; color: #000; align-content: center;"> Departamentos infectados </p>
+                <div id="chart"></div>
+            </div>
+            <div class="col-md mx-auto">
+                <p style="font-size: 25px; color: #000; align-content: center;"> Casos por Edades </p>
+                <div id="edades"></div>
+            </div>
+        </div>
+    </div>
+
+
+</body>
+
+</html>

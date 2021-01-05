@@ -1,0 +1,114 @@
+
+@import url('https://fonts.googleapis.com/css?family=Montserrat:400,800');
+
+* {
+	box-sizing: border-box;
+}
+
+body {
+	background: #f6f5f7;
+	display: flex;
+	justify-content: center;
+	flex-direction: column;
+	font-family: 'Montserrat', sans-serif;
+	height: 100vh;
+	margin: -20px 0 50px;
+}
+
+button {
+	border-radius: 20px;
+	border: 1px solid #FF4B2B;
+	background-color: #FF4B2B;
+	color: #FFFFFF;
+	font-size: 12px;
+	font-weight: bold;
+	padding: 12px 45px;
+	letter-spacing: 1px;
+	text-transform: uppercase;
+	transition: transform 80ms ease-in;
+}
+
+a {
+	border-radius: 20px;
+	border: 1px solid #FF4B2B;
+	background-color: #FF4B2B;
+	color: #FFFFFF;
+	font-size: 12px;
+	font-weight: bold;
+	padding: 12px 45px;
+	letter-spacing: 1px;
+	text-transform: uppercase;
+	transition: transform 80ms ease-in;
+}
+
+button:active {
+	transform: scale(0.95);
+}
+
+button:focus {
+	outline: none;
+}
+
+button.ghost {
+	border-color: #FFFFFF;
+}
+
+label.ghost {
+	border-color: #FFFFFF;
+}
+
+button.arreglo{
+	position: fixed;
+	top: 8%;
+  left: 6%;
+}
+
+button.arreglo2{
+	position: fixed;
+	top: 8%;
+	 right: 6%;
+	 opacity: 0.5;
+	 cursor: not-allowed;
+}
+
+button.arreglo3{
+	position: fixed;
+	bottom: 8%;
+	right: 42%;
+	opacity: 0.5;
+	cursor: not-allowed;
+}
+
+a.arreglo4{
+	position: fixed;
+	bottom: 48%;
+	left: 3%;
+	cursor: pointer;
+}
+
+button.arreglo5{
+	position: fixed;
+	bottom: 38%;
+	left: 3%;
+	cursor: pointer;
+}
+
+button.arreglo6{
+	position: fixed;
+	bottom: 18%;
+	left: 3%;
+	cursor: pointer;
+}
+
+.container {
+	background-color: #fff;
+	border-radius: 10px;
+  	box-shadow: 0 25px 37px rgba(0,0,0,0.25), 
+			0 10px 10px rgba(0,0,0,0.22);
+	position: relative;
+	overflow: hidden;
+	width: 768px;
+	max-width: 100%;
+	min-height: 480px;
+	align-self: center;
+}
