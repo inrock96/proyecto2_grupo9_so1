@@ -31,7 +31,7 @@ type Resultado struct{
 
 func main() {
 	mux := http.NewServeMux()
-	mux.HandleFunc("/datos", datos_post)
+	mux.HandleFunc("/", datos_post)
 	log.Printf("listening on port 9000")
 	log.Fatal(http.ListenAndServe(":9000", mux))	
 }
