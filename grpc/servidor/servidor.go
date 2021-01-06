@@ -27,7 +27,7 @@ type recibe struct {
 
 
 const (
-	port = "localhost:9090"
+	port = ":9090"
 )
 
 // SayHello implements helloworld.GreeterServer
