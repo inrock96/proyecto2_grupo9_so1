@@ -1,0 +1,18 @@
+syntax = "proto3";
+
+package mcache;
+
+message Datos{
+ string Name = 2;
+ string Location = 3;
+ int32 Age = 4;
+ string InfectedType = 5; 
+ string State = 6;
+}
+message Respuesta{
+    bool Enviado = 1;
+    string msg = 2;
+}
+service Cache{
+ rpc ObtenerDatos(Datos) returns(Respuesta){}
+}

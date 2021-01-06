@@ -1,0 +1,30 @@
+//instalacion de golang
+sudo add-apt-repository ppa:longsleep/golang-backports
+sudo apt update
+//sudo apt-get install golang-1.14
+
+sudo apt install golang
+
+
+//instalar proto		 
+sudo apt install protobuf-compiler
+
+//con este si funciona el proto		
+sudo apt install golang-goprotobuf-dev
+
+//ejecuta .proto
+protoc --go_out=plugins=grpc:. mcache.proto
+
+//instalar libreria
+go get -v -d gitlab.com/pantomath-io/demo-grpc
+go get go.mongodb.org/mongo-driver/mongo
+
+//go mod init github.com/my/repo
+//go get github.com/go-redis/redis/v8
+go get github.com/go-redis/redis
+
+//elimina paquetes
+go clean init github.com/my/repo
+go clean -i github.com/go-redis/redis/v8
+
+
