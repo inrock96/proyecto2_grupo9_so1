@@ -27,9 +27,9 @@ type caso struct {
 
 func main() {
 	r := mux.NewRouter()
-	r.HandleFunc("/", inicio).Methods("GET")
+	r.HandleFunc("/", caseHandler).Methods("POST")
 	r.HandleFunc("/caso", caseHandler).Methods("POST")
-	err := http.ListenAndServe(":3001", r)
+	err := http.ListenAndServe(":9000", r)
 	if err != nil {
 		log.Fatal(err)
 	}
