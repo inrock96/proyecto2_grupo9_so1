@@ -80,7 +80,7 @@ func sendtoGrpc(nombre string, depto string, edad int32, fc string, est string) 
 	time.Sleep(2000 * time.Millisecond)
 	var conn *grpc.ClientConn
 	//conn, err := grpc.Dial("cnt-python-svc:50051", grpc.WithInsecure())
-	conn, err := grpc.Dial("servidorgo-sopes1:9090", grpc.WithInsecure())
+	conn, err := grpc.Dial("34.70.90.113:32105", grpc.WithInsecure())
 	if err != nil {
 		fmt.Println("No se puedo conectar: %s", err)
 		return nil,err;
