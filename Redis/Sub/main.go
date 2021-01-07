@@ -31,7 +31,7 @@ func main() {
 		DB:       0,
 	})
 	for {
-		time.Sleep(2 * time.Second)
+		time.Sleep(200 * time.Millisecond)
 		pubsub := client.PSubscribe("casos")
 
 		msg, err := pubsub.ReceiveMessage()
@@ -46,17 +46,17 @@ func main() {
 		//TODO enviar datos recibidos a redis
 		pivote1, err := (client.Get("CONTADOR").Result())
 		if err != nil {
-			fmt.Println("soy peor ahora soy peor")
+			fmt.Println("No hay contador")
 			continue
 		}
 		pivote, err2 := strconv.Atoi(pivote1)
 		if err2 != nil {
 		}
-		client.HSet("PACIENTES", "name["+pivote1+"]", nuevo.Name)
-		client.HSet("PACIENTES", "location["+pivote1+"]", nuevo.Location)
-		client.HSet("PACIENTES", "age["+pivote1+"]", nuevo.Age)
-		client.HSet("PACIENTES", "infected_type["+pivote1+"]", nuevo.InfectedType)
-		client.HSet("PACIENTES", "state["+pivote1+"]", nuevo.State)
+		client.HSet("PACIENTES", "nombre["+pivote1+"]", nuevo.Name)
+		client.HSet("PACIENTES", "departamento["+pivote1+"]", nuevo.Location)
+		client.HSet("PACIENTES", "edad["+pivote1+"]", nuevo.Age)
+		client.HSet("PACIENTES", "forma de contagio["+pivote1+"]", nuevo.InfectedType)
+		client.HSet("PACIENTES", "estado["+pivote1+"]", nuevo.State)
 		pivateInt := int(pivote) + 1
 		client.Set("CONTADOR", pivateInt, 0)
 
