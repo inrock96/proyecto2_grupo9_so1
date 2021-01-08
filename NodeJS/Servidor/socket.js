@@ -102,6 +102,10 @@ async function getRedis() {
                 for (let x = 1; x <= 5; x++) {
                     valor = valor - 1;
 
+                    if(valor<=0){
+                        break;
+                    }
+
                     let caso ={NOMBRE: "",
                         EDAD : "",
                         DEPARTAMENTO : "",
@@ -154,7 +158,7 @@ async function getRedis() {
 
                 let valor = req.toString();
                 valor = valor - 1;
-                for (let x = 0; x <= valor; x++) {
+                for (let x = 0; x <= valor && valor >0; x++) {
                     let edad = Number(value[EDAD + "[" + x.toString() + "]"]);
                     edad = edad / 10;
                     let intvalue = Math.floor(edad);
